@@ -96,6 +96,34 @@ void sondanSil()
     temp->pointer = NULL;
 }
 
+void aradanSil(int data)
+{
+    temp = first;
+    if (temp->data == data)
+    {
+        bastanSil();
+    }
+    else
+    {
+        struct node *temp2;
+        temp2 = (struct node *)malloc(sizeof(struct node));
+        while (temp->pointer->data != data)
+        {
+            temp = temp->pointer->pointer;
+        }
+        if (temp->pointer->pointer == NULL)
+        {
+            sondanSil();
+        }
+        else
+        {
+            temp2 = temp->pointer;
+            free(temp->pointer);
+            temp->pointer = temp2;
+        }
+    }
+}
+
 void yazdir()
 {
     system("clear");
@@ -126,6 +154,7 @@ int main()
         printf("Araya eleman eklemen için 3\n");
         printf("Baştan eleman silmek için 4\n");
         printf("Sondan eleman silmek için 5\n");
+        printf("Aradan eleman silmek için 6\n");
         printf("Seçiminizi yapın: ");
         scanf("%d", &choice);
 
@@ -159,6 +188,12 @@ int main()
             break;
         case 5:
             sondanSil();
+            yazdir();
+            break;
+        case 6:
+            printf("\nAradan silinecek elemanın değeri: ");
+            scanf("%d", &sayi);
+            aradanSil(sayi);
             yazdir();
             break;
         }
