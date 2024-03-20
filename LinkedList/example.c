@@ -124,6 +124,22 @@ void aradanSil(int data)
     }
 }
 
+void tersCevir()
+{
+    struct node *temp2 = NULL;
+    struct node *prev = NULL;
+
+    temp = first;
+    while (temp != NULL)
+    {
+        temp2 = temp->pointer;
+        temp->pointer = prev;
+        prev = temp;
+        temp = temp2;
+    }
+    first = prev;
+}
+
 void yazdir()
 {
     system("clear");
@@ -155,6 +171,7 @@ int main()
         printf("Baştan eleman silmek için 4\n");
         printf("Sondan eleman silmek için 5\n");
         printf("Aradan eleman silmek için 6\n");
+        printf("Elemanları ters çevirmek için 7\n");
         printf("Seçiminizi yapın: ");
         scanf("%d", &choice);
 
@@ -194,6 +211,10 @@ int main()
             printf("\nAradan silinecek elemanın değeri: ");
             scanf("%d", &sayi);
             aradanSil(sayi);
+            yazdir();
+            break;
+        case 7:
+            tersCevir();
             yazdir();
             break;
         }
