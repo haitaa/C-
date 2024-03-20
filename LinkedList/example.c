@@ -140,6 +140,24 @@ void tersCevir()
     first = prev;
 }
 
+int elemanSay()
+{
+    int count = 0;
+    if (first = NULL)
+    {
+        return count;
+    }
+
+    temp = start;
+    while (temp->pointer != NULL)
+    {
+        count++;
+        temp = temp->pointer;
+    }
+    count++;
+    return count;
+}
+
 void yazdir()
 {
     system("clear");
@@ -172,6 +190,7 @@ int main()
         printf("Sondan eleman silmek için 5\n");
         printf("Aradan eleman silmek için 6\n");
         printf("Elemanları ters çevirmek için 7\n");
+        printf("Eleman adetini öğrenmek için 8\n");
         printf("Seçiminizi yapın: ");
         scanf("%d", &choice);
 
@@ -216,6 +235,9 @@ int main()
         case 7:
             tersCevir();
             yazdir();
+            break;
+        case 8:
+            printf("Eleman adeti: %d", elemanSay());
             break;
         }
         count++;
