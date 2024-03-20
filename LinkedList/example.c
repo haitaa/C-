@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 struct node
 {
@@ -70,26 +71,49 @@ void arayaEkle(int data, int n)
     eklenecek->pointer = temp2;
 }
 
+void bastanSil()
+{
+    if (first != NULL)
+    {
+        temp = first->pointer;
+        free(first);
+        first = temp;
+    }
+    else
+    {
+        free(first);
+    }
+}
+
 void yazdir()
 {
-    temp = first;
-    while (temp->pointer != NULL)
+    system("clear");
+    if (first != NULL)
     {
+        temp = first;
+        while (temp->pointer != NULL)
+        {
+            printf("%d ", temp->data);
+            temp = temp->pointer;
+        }
         printf("%d ", temp->data);
-        temp = temp->pointer;
     }
-    printf("%d ", temp->data);
+    else
+    {
+        printf("Eleman bulunamadı.");
+    }
 }
 
 int main()
 {
     int sayi, count = 0, choice, n;
 
-    while (count != 6)
+    while (true)
     {
-        printf("Başa eleman eklemek için 1\n");
+        printf("\nBaşa eleman eklemek için 1\n");
         printf("Sona eleman eklemek için 2\n");
         printf("Araya eleman eklemen için 3\n");
+        printf("Baştan eleman silmek için 4\n");
         printf("Seçiminizi yapın: ");
         scanf("%d", &choice);
 
@@ -115,6 +139,10 @@ int main()
             printf("\nAraya eklenecek elemanın değerini giriniz: ");
             scanf("%d", &sayi);
             arayaEkle(sayi, n);
+            yazdir();
+            break;
+        case 4:
+            bastanSil();
             yazdir();
             break;
         }
