@@ -85,6 +85,17 @@ void bastanSil()
     }
 }
 
+void sondanSil()
+{
+    temp = first;
+    while (temp->pointer->pointer != NULL)
+    {
+        temp = temp->pointer;
+    }
+    free(temp->pointer);
+    temp->pointer = NULL;
+}
+
 void yazdir()
 {
     system("clear");
@@ -114,6 +125,7 @@ int main()
         printf("Sona eleman eklemek için 2\n");
         printf("Araya eleman eklemen için 3\n");
         printf("Baştan eleman silmek için 4\n");
+        printf("Sondan eleman silmek için 5\n");
         printf("Seçiminizi yapın: ");
         scanf("%d", &choice);
 
@@ -143,6 +155,10 @@ int main()
             break;
         case 4:
             bastanSil();
+            yazdir();
+            break;
+        case 5:
+            sondanSil();
             yazdir();
             break;
         }
