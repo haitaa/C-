@@ -148,7 +148,7 @@ int elemanSay()
         return count;
     }
 
-    temp = start;
+    temp = first;
     while (temp->pointer != NULL)
     {
         count++;
@@ -156,6 +156,24 @@ int elemanSay()
     }
     count++;
     return count;
+}
+
+int elemanToplam()
+{
+    int toplam = 0;
+    if (first == NULL)
+    {
+        return toplam;
+    }
+
+    temp = first;
+    while (temp->pointer != NULL)
+    {
+        toplam += temp->data;
+        temp = temp->pointer;
+    }
+    toplam += temp->data;
+    return toplam;
 }
 
 void yazdir()
@@ -191,6 +209,7 @@ int main()
         printf("Aradan eleman silmek için 6\n");
         printf("Elemanları ters çevirmek için 7\n");
         printf("Eleman adetini öğrenmek için 8\n");
+        printf("Elemanların toplamını öğrenmek için 9\n");
         printf("Seçiminizi yapın: ");
         scanf("%d", &choice);
 
@@ -238,6 +257,9 @@ int main()
             break;
         case 8:
             printf("Eleman adeti: %d", elemanSay());
+            break;
+        case 9:
+            printf("Elemanların toplamı: %d", elemanToplam());
             break;
         }
         count++;
